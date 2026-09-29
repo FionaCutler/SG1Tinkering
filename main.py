@@ -1,4 +1,5 @@
 import requests
+import json
 
 # The API endpoint
 url = "https://api.tvmaze.com/shows/204/episodes"
@@ -7,6 +8,12 @@ url = "https://api.tvmaze.com/shows/204/episodes"
 response = requests.get(url)
 
 # Print the response
-#print(response.json())
-for episode in response:
-    print(episode)
+episodes = response.json()
+rating = 0
+name= ''
+for episode in episodes:
+    if (rating < episode['rating']['average']):
+        rating = episode['rating']['average']
+        name = episode['name']
+        print(name)
+print(name)
