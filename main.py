@@ -9,11 +9,11 @@ response = requests.get(url)
 
 # Print the response
 episodes = response.json()
-rating = 0
+rating = 10
 name= ''
 for episode in episodes:
-    if (rating < episode['rating']['average']):
+    if (rating > episode['rating']['average']):
         rating = episode['rating']['average']
         name = episode['name']
-        print(name)
+        
 print(name)
